@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+
+ext {
+    name = 'Eureka Server'
+    description = 'Eureka Server demo project' 
+    version='0.0.1-SNAPSHOT'
+    sourceEncoding='UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+	imports { 
+		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR5'
+	}
+}
+
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka-server:1.2.6.RELEASE'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile "junit:junit"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

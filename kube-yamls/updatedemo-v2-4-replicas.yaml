@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: updatedemo-deployment
+spec:
+  replicas: 4 # 4 pods
+  template: 
+    metadata:
+      labels:
+        app: updatedemo
+    spec:
+      containers:
+      - name: updatedemo
+        image: mgruc/updatedemo:v2
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,6 @@
+---
+applications:
+- name: updatedemo
+  memory: 1024MB
+  random-route: true
+  path: updatedemo-0.0.2.jar
