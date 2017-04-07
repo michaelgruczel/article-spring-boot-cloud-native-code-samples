@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+<head>
+	<title>Secured Content</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>Secured chat messenger</h1>
+		<p>You can ask for wheather or concerts in your location e.g.
+			/weather hamburg
+			or
+			/weather springfield
+			or
+			/concerts hamburg
+			or
+			/concerts springfield
+		</p>
+
+
+		<form action="#" th:action="@{/message}" th:object="${message}" method="post">
+			<p>Message: <input type="text" th:field="*{content}" /></p>
+			<p><input type="submit" value="Submit" /></p>
+		</form>
+
+		<a href="./flushdb">clean</a>
+
+		<p th:each="message : ${messages}">
+			<div th:text="${message.author}"></div>
+		    <div th:text="${message.content}"></div>
+		</p>
+
+
+
+
+	</div>
+</body>
+</html>

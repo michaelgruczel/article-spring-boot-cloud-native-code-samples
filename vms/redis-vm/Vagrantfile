@@ -1,0 +1,39 @@
+VAGRANTFILE_API_VERSION = "2"
+
+$script = <<SCRIPT
+echo install make...
+sudo apt-get update
+sudo apt-get -y install make
+echo install redis...
+mkdir /opt/redis
+cd /opt/redis
+wget -q http://download.redis.io/redis-stable.tar.gz
+tar -xz --keep-newer-files -f redis-stable.tar.gz
+cd redis-stable
+make
+make install
+sudo apt-get install -y redis-tools
+rm /etc/redis.conf
+mkdir -p /etc/redis
+mkdir /var/redis
+chmod -R 777 /var/redis
+useradd redis
+cp -u /vagrant/redis.conf /etc/redis/6379.conf
+cp -u /vagrant/redis.init.d /etc/init.d/redis_6379
+update-rc.d redis_6379 defaults
+chmod a+x /etc/init.d/redis_6379
+/etc/init.d/redis_6379 start
+SCRIPT
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.network :forwarded_port, guest: 6379, host: 6379
+
+  config.vm.provider :virtualbox do |vbox|
+    vbox.customize ["modifyvm", :id, "--memory", 1024]
+  end
+
+  config.vm.provision "shell", inline: $script
+
+end

@@ -1,6 +1,7 @@
 .gradle
 /build/
 build
+.vagrant
 
 !gradle/wrapper/gradle-wrapper.jar
 
