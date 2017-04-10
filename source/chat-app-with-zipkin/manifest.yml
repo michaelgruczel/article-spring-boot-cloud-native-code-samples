@@ -1,0 +1,6 @@
+---
+applications:
+- name: chat-app
+  memory: 1024MB
+  random-route: true
+  path: build/libs/chat-app-0.0.1.jar

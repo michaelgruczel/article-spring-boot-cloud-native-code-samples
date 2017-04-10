@@ -17,7 +17,7 @@ apply plugin: 'org.springframework.boot'
 
 dependencyManagement {
     imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR5'
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR6'
         mavenBom 'io.pivotal.spring.cloud:spring-cloud-services-dependencies:1.3.1.RELEASE'
     }
 }
