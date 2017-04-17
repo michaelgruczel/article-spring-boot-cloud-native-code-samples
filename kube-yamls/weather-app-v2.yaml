@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: weather-app
+spec:
+  replicas: 1
+  template: 
+    metadata:
+      labels:
+        app: weather-app
+    spec:
+      containers:
+      - name: weather-app
+        image: mgruc/weather-app:v2
+        ports:
+        - containerPort: 8090

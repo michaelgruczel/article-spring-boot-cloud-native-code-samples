@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: chat-app
+spec:
+  replicas: 1
+  template: 
+    metadata:
+      labels:
+        app: chat-app
+    spec:
+      containers:
+      - name: chat-app
+        image: mgruc/chat-app:v1
+        ports:
+        - containerPort: 8080      

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: concert-app
+spec:
+  replicas: 1
+  template: 
+    metadata:
+      labels:
+        app: concert-app
+    spec:
+      containers:
+      - name: concert-app
+        image: mgruc/concert-app:v1
+        ports:
+        - containerPort: 8100   
