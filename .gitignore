@@ -5,6 +5,9 @@ build
 
 !gradle/wrapper/gradle-wrapper.jar
 
+.DS_Store
+source/build-docker-containers.sh
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
